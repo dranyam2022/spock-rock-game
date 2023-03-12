@@ -64,9 +64,12 @@ h2 {
   cursor: pointer;
 }
 
-.player .selected,
-.computer .selected {
+.player .selected {
   color: black;
+}
+
+.computer .selected {
+  color: grey;
 }
 
 .player .far:last-of-type,
@@ -74,7 +77,7 @@ h2 {
   margin-right: 0;
 }
 
-.reset-icon {
+.resetIcon {
   font-size: 30px;
   cursor: pointer;
   margin-left: 50px;
@@ -112,7 +115,7 @@ h2 {
     margin-right: 20px;
   }
 
-  .reset-icon {
+  .resetIcon {
     margin-top: 25px;
     margin-left: 25px;
   }
@@ -136,7 +139,7 @@ h2 {
     font-size: 43px;
   }
 
-  .reset-icon {
+  .resetIcon {
     margin-top: 15px;
   }
 
