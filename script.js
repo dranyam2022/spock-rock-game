@@ -16,12 +16,16 @@ const resultText = document.querySelector(".resultText");
 const playerScore = document.querySelector(".playerScore");
 const computerScore = document.querySelector(".computerScore");
 const reset = document.querySelector(".resetIcon");
+const winSound = document.querySelector(".win");
+const loseSound = document.querySelector(".lose");
 let pScore = 0;
 let cScore = 0;
 
 /* playerPick function */
 function playerPick(evt) {
   const player = evt.target.getAttribute("title");
+  winSound.load();
+  loseSound.load();
   removeConfetti();
   stopConfetti();
   return player;
@@ -42,9 +46,11 @@ function checkWinner(player, computer) {
   if (choices[p].defeats.includes(c)) {
     pScore++;
     startConfetti();
+    winSound.play();
     return "You Won!";
   } else if (choices[c].defeats.includes(p)) {
     cScore++;
+    loseSound.play();
     return "You Lost!";
   } else {
     return "Its a tie, try again!";
