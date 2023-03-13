@@ -1,3 +1,5 @@
+import { startConfetti, stopConfetti, removeConfetti } from "./confetti.js";
+
 const choices = {
   rock: { name: "Rock", defeats: ["scissors", "lizard"] },
   paper: { name: "Paper", defeats: ["rock", "spock"] },
@@ -20,6 +22,8 @@ let cScore = 0;
 /* playerPick function */
 function playerPick(evt) {
   const player = evt.target.getAttribute("title");
+  removeConfetti();
+  stopConfetti();
   return player;
 }
 
@@ -37,6 +41,7 @@ function checkWinner(player, computer) {
 
   if (choices[p].defeats.includes(c)) {
     pScore++;
+    startConfetti();
     return "You Won!";
   } else if (choices[c].defeats.includes(p)) {
     cScore++;
@@ -74,8 +79,8 @@ function gameStart(evt) {
   const message = checkWinner(player, computer);
 
   resultText.textContent = message;
-  playerScore.textContent = pScore;
-  computerScore.textContent = cScore;
+  playerScore.textContent = `${pScore}pts. `;
+  computerScore.textContent = `${cScore}pts. `;
 }
 /* click event listener to playerOptions */
 playerOptions.forEach((option) => {
