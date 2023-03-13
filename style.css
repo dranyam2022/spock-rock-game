@@ -69,6 +69,9 @@ h2 {
   user-select: none;
 }
 
+.choice {
+  float: right;
+}
 .player .selected {
   color: black;
 }
