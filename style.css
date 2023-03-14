@@ -13,6 +13,7 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
+  user-select: none;
 }
 
 .game-container {
@@ -22,6 +23,13 @@ body {
   border-radius: 5px;
   box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.5);
   position: fixed;
+}
+
+.game-content {
+  display: flex;
+  flex-direction: column;
+  max-width: 85%;
+  margin: 0 auto;
 }
 
 .header {
@@ -39,19 +47,14 @@ h1 {
   font-size: 30px;
 }
 
-.player-container,
-.computer-container {
-  margin: 50px;
-}
-
-h2 {
-  margin-bottom: 20px;
-}
-
 .far {
   font-size: 50px;
-  margin-right: 40px;
   user-select: none;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
 }
 
 .player .far {
@@ -61,6 +64,12 @@ h2 {
 
 .player .choice {
   color: dodgerblue;
+}
+
+.player-container,
+.computer-container {
+  max-width: 100%;
+  margin-bottom: 1rem;
 }
 
 .computer .far,
@@ -80,24 +89,55 @@ h2 {
   color: grey;
 }
 
-.player .far:last-of-type,
-.computer .far:last-of-type {
-  margin-right: 0;
-}
-
 .resetIcon {
   font-size: 30px;
   cursor: pointer;
 }
 
 .result-container {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
 }
 
 .result-text {
   font-size: 50px;
-  margin: unset;
-  margin-top: 20px;
+}
+
+.limit-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.limit-options {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.limit-option {
+  padding: 0.5rem;
+  background-color: #e7e7e7;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.limit-option:hover {
+  transform: scale(1.2);
+}
+
+.limit-option:active {
+  transform: scale(0.98);
+}
+
+.limit-option--selected {
+  background-color: green;
+  color: white;
 }
 
 /* Media Query: Large Smartphone (Vertical) */
@@ -109,20 +149,6 @@ h2 {
 
   h1 {
     font-size: 24px;
-  }
-
-  .player-container,
-  .computer-container {
-    margin: 50px 0 25px 25px;
-  }
-
-  .far {
-    margin-right: 20px;
-  }
-
-  .resetIcon {
-    margin-top: 25px;
-    margin-left: 25px;
   }
 }
 
@@ -136,19 +162,11 @@ h2 {
     font-size: 22px;
   }
 
-  .player-container {
-    margin: 43px 0 25px 20px;
-  }
-
   .far {
     font-size: 43px;
   }
 
-  .resetIcon {
-    margin-top: 15px;
-  }
-
   .result-container {
-    margin: 0 20px;
+    margin-top: 0.5rem;
   }
 }
