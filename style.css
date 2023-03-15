@@ -140,6 +140,10 @@ h1 {
   color: white;
 }
 
+.game-over {
+  opacity: 0.3;
+  pointer-events: none;
+}
 /* Media Query: Large Smartphone (Vertical) */
 @media screen and (max-width: 600px) {
   .game-container {

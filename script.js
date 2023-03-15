@@ -94,20 +94,11 @@ function gameStart(evt) {
     cSelected.classList.add("selected");
     computerChoice.textContent = computer.toUpperCase();
   } else {
+    playerContainer.classList.add("game-over");
+    computerContainer.classList.add("game-over");
     if (pScore === scoreLimit) {
-      playerContainer.style.opacity = "0.3";
-      playerContainer.disabled = true;
-      playerContainer.style.pointerEvents = "none";
-      computerContainer.disabled = true;
-      computerContainer.style.opacity = "0.3";
       resultText.textContent = "Congratulations! Reset to play again!";
     } else {
-      playerContainer.style.opacity = "0.3";
-      playerContainer.disabled = true;
-      playerContainer.style.pointerEvents = "none";
-      computerContainer.disabled = true;
-      computerContainer.disabled = true;
-      computerContainer.style.opacity = "0.3";
       resultText.textContent = "You Lost! Reset and try again!";
     }
   }
@@ -120,6 +111,7 @@ playerOptions.forEach((option) => {
 
 /* score limit handler function */
 function scoreLimitHandler(event) {
+  resetHandler();
   limitOptions.forEach((option) => {
     option.classList.remove("limit-option--selected");
   });
@@ -136,6 +128,27 @@ limitOptions.forEach((option) => {
 function resetHandler() {
   pScore = 0;
   cScore = 0;
+  playerContainer.classList.remove("game-over");
+  computerContainer.classList.remove("game-over");
+  resultText.textContent = "";
+  playerOptions.forEach((option) => {
+    option.classList.remove("selected");
+  });
+
+  computerOptions.forEach((option) => {
+    option.classList.remove("selected");
+  });
+
+  computerChoice.textContent = "";
+  playerChoice.textContent = "";
+  playerScore.textContent = "0pts.";
+  computerScore.textContent = "0pts.";
+
+  stopConfetti();
+  removeConfetti();
+
+  winSound.load();
+  loseSound.load();
 }
 /* reset button listener */
 reset.addEventListener("click", resetHandler);
